@@ -21,6 +21,10 @@ function App() {
     setTasks(newTasksArray)
   }
 
+  function onTaskFormSubmit(newTask){
+    setTasks([...tasks, newTask])
+  }
+
   const tasksToDisplay = tasks.filter((task) => {
     if(selectedCategory === "All"){
       return true
@@ -35,7 +39,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onCategoryChange={onCategoryChange} isSelected={activeClass}/>
-      <NewTaskForm categories={CATEGORIES}/>
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList tasks={tasksToDisplay} onTaskDelete={onTaskDelete}/>
     </div>
   );
