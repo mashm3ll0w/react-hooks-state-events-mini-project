@@ -5,7 +5,7 @@ function TaskList({tasks, onTaskDelete}) {
 
   const displayTasks = tasks.map((task,index) => {
     return (
-      <Task key={index} task={task.text} category={task.category} onTaskDelete={onTaskDelete}/>
+      <Task key={index} text={task.text} category={task.category} onTaskDelete={onTaskDelete}/>
     )
   })
   return (

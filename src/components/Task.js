@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({category, task, onTaskDelete}) {
+function Task({category, text, onTaskDelete}) {
 
   function handleDelete(e){
     const deletedTask = e.target.id
@@ -10,8 +10,8 @@ function Task({category, task, onTaskDelete}) {
   return (
     <div className="task">
       <div className="label">{category}</div>
-      <div className="text">{task}</div>
-      <button className="delete" id={task} onClick={handleDelete}>X</button>
+      <div className="text">{text}</div>
+      <button className="delete" id={text} onClick={handleDelete}>X</button>
     </div>
   );
 }
