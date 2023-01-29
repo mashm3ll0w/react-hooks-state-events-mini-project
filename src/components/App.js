@@ -7,6 +7,7 @@ import { CATEGORIES, TASKS } from "../data";
 
 function App() {
 
+  const [tasks, setTasks] = useState(TASKS)
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [activeClass, setActiveClass] = useState(true)
 
@@ -15,7 +16,12 @@ function App() {
     setActiveClass(activeClass => !activeClass)
   }
 
-  const tasksToDisplay = TASKS.filter((task) => {
+  function onTaskDelete(deletedTask){
+    const newTasksArray = tasks.filter((task) => task.text !== deletedTask)
+    setTasks(newTasksArray)
+  }
+
+  const tasksToDisplay = tasks.filter((task) => {
     if(selectedCategory === "All"){
       return true
     }
@@ -30,7 +36,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onCategoryChange={onCategoryChange} isSelected={activeClass}/>
       <NewTaskForm categories={CATEGORIES}/>
-      <TaskList tasks={tasksToDisplay}/>
+      <TaskList tasks={tasksToDisplay} onTaskDelete={onTaskDelete}/>
     </div>
   );
 }
